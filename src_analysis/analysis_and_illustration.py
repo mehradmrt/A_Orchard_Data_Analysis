@@ -1,28 +1,24 @@
 #%%
 
-from turtle import color
+# from turtle import color
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import statistics 
 
-swp_root = 'C:/Users/Students/Box/Research/IoT4ag/Project_ Water Stress/' \
-                +'Data Collection/Almond/Ground Data'
-df_swp = pd.read_csv(swp_root+'/swp.csv', sep='\t')
-
-# df_im = pd.read_json('pistachio_im_indexes.json')
-
-
-
+# swp_root = 'C:/Users/Students/Box/Research/IoT4ag/Project_ Water Stress/' \
+#                 +'Data Collection/Almond/Ground Data'
+# df_swp = pd.read_csv(swp_root+'/swp.csv', sep=',')
 # df_lt = pd.read_csv(swp_root+'/leaf_temp.csv')
 
-# df_sap = pd.read_json('pistachio_sap_data.json')
-# df_weather = pd.read_json('pistachio_weather_data.json')
-
-# arable_root = 'C:/Users/Students/Box/Research/IoT4ag'\
-#     +'/Project_ Water Stress/Data Collection/Pistachio/Arable_P'
-# df_arable = pd.read_csv(arable_root+
-# '/arable___012444___ 2022_06_21 19_18_53__012444_daily_20220930.csv', skiprows=10)
+df_swp = pd.read_json('../results/almond_SWP.json')
+df_lt = pd.read_json('../results/almond_leaftemp.json')
+df_im = pd.read_json('../results/almond_im_indexes.json')
+df_sap = pd.read_json('../results/almond_sap_data.json')
+df_weather = pd.read_json('../results/almond_weather_data.json')
+df_arable = pd.read_json('../results/almond_arable.json')
+# df_visnir = pd.read_json('../results/almond_visnir.json')
+# df_ram = pd.read_json('../results/almond_raman.json')
 
 testnum = 7
 treenum = 17
