@@ -13,9 +13,6 @@ df_lt = pd.read_csv(swp_root+'/leaf_temp.csv')
 # df_swp.to_json('almond_SWP.json')
 # df_lt.to_json('almond_leaftemp.json')
 
-# df_sap = pd.read_json('pistachio_sap_data.json')
-# df_weather = pd.read_json('pistachio_weather_data.json')
-
 arable_root = 'C:/Users/Students/Box/Research/IoT4ag'\
     +'/Project_ Water Stress/Data Collection/Almond/Arable_A'
 df_arable_T15 = pd.read_csv(arable_root+
