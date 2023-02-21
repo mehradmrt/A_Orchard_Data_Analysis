@@ -113,7 +113,7 @@ for x in range(len(idxes)):
 
 df = pd.DataFrame({'spec_idx':tmp0, 'image_id': tmp1, 'test_number': tmp2, 'pixel_array':tmp3,\
     'mean':tmp4, 'median':tmp5, 'stdev':tmp6})
-df.to_json('pistachio_im_indexes.json')
+df.to_json('almond_im_indexes.json')
 
 
 

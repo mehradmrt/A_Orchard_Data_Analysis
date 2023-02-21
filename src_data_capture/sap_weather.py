@@ -76,7 +76,26 @@ class file_handle:
         return newsap
 
 
-    
+#%%
+# df_weather = pd.read_json('../results/almond_weather_data.json')
+# df_sap = pd.read_json('../results/almond_sap_data.json')
+# df_arable = pd.read_json('../results/almond_arable.json')
+
+# # df_weather = df_weather.sort_values(by=['Date and Time'])
+# # df_weather= df_weather.reset_index(drop=True)
+# df_weather.plot(x=0, y=2, rot=90)
+
+# # df_sap = df_sap.sort_values(by=['Sensor ID','Date and Time'])
+# # df_sap= df_sap.reset_index(drop=True)
+# df_sap1 = df_sap[df_sap["Sensor ID"]=='TREW 1']
+# df_sap2 = df_sap[df_sap["Sensor ID"]=='TREW 2']
+# df_sap3 = df_sap[df_sap["Sensor ID"]=='TREW 3']
+# df_sap4 = df_sap[df_sap["Sensor ID"]=='TREW 4']
+# df_sap5 = df_sap[df_sap["Sensor ID"]=='TREW 5']
+# df_sap6 = df_sap[df_sap["Sensor ID"]=='TREW 6']
+
+# df_sap2.plot(x=0, y=3, rot=90)    
+
 #%%
 Almond = file_handle(A_rtdr,A_sensor_num)
 almond_sap_data = Almond.sap_correct()

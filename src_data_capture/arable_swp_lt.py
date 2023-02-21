@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import statistics
 
-# df_im = pd.read_json('pistachio_im_indexes.json')
+#%%
+df_im = pd.read_json('pistachio_im_indexes.json')
 
 swp_root = 'C:/Users/Students/Box/Research/IoT4ag/Project_ Water Stress/' \
                 +'Data Collection/Almond/Ground Data'
@@ -23,16 +24,10 @@ df_arable_T15.insert(1,"tree_idx",'15')
 df_arable_T2.insert(1,"tree_idx",'2')
 df_arable_T15.insert(1,"orchard",'Almond')
 df_arable_T2.insert(1,"orchard",'Almond')
-arable = pd.concat([df_arable_T2, df_arable_T15], ignore_index=True)
-arable.to_json('almond_arable.json')
+df_arable = pd.concat([df_arable_T2, df_arable_T15], ignore_index=True)
+# df_arable.to_json('almond_arable.json')
 
-# testnum = 7
-# treenum = 18
-# indexnum = 5
-# testdic = ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
-# idxdic = ['NDVI', 'GNDVI', 'OSAVI', 'LCI' ,'NDRE']
-# DOY = [158, 172, 186, 194, 207, 214, 224]
-
+#%%
 # #%%
 # ndvi = df_im.loc[df_im['spec_idx'] == idxdic[0]]['median']
 # gndvi = df_im.loc[df_im['spec_idx'] == idxdic[1]]['median']
@@ -43,4 +38,7 @@ arable.to_json('almond_arable.json')
 # lt_mn = np.array(df_lt['leaf_temp'])
 
 # dfcsv = {}
+
+# %%
+
 # %%
