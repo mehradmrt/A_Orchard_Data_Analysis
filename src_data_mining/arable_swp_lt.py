@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 import statistics
 
 #%%
-df_im = pd.read_json('pistachio_im_indexes.json')
-
 swp_root = 'C:/Users/Students/Box/Research/IoT4ag/Project_ Water Stress/' \
                 +'Data Collection/Almond/Ground Data'
 df_swp = pd.read_csv(swp_root+'/swp.csv')

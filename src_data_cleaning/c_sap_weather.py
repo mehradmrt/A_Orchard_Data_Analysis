@@ -3,15 +3,15 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-df_swp = pd.read_json('../results/almond_SWP.json')
-df_lt = pd.read_json('../results/almond_leaftemp.json')
-df_im = pd.read_json('../results/almond_im_indexes.json')
+# df_swp = pd.read_json('../results/almond_SWP.json')
+# df_lt = pd.read_json('../results/almond_leaftemp.json')
+# df_im = pd.read_json('../results/almond_im_indexes.json')
 df_sap = pd.read_json('../results/almond_sap_data.json')
 df_weather = pd.read_json('../results/almond_weather_data.json')
-df_arable = pd.read_json('../results/almond_arable.json')
-df_visnir = pd.read_json('../results/almond_visnir.json')
-df_ram = pd.read_json('../results/almond_raman.json')
-df_cwsi = pd.read_json('../results/almond_cwsi.json')
+# df_arable = pd.read_json('../results/almond_arable.json')
+# df_visnir = pd.read_json('../results/almond_visnir.json')
+# df_ram = pd.read_json('../results/almond_raman.json')
+# df_cwsi = pd.read_json('../results/almond_cwsi.json')
 
 Dict = {'T1': '2022-06-08', 'T2': '2022-06-23', 'T3': '2022-07-08', 'T4': '2022-07-15', \
             'T5': '2022-07-30', 'T6': '2022-08-03', 'T7': '2022-08-31'}
@@ -82,13 +82,52 @@ sap_len(df_sap,df_sap_d)
 
 
 #%%
-fig, ax = plt.subplots()
-ax2 = ax.twinx()
-df_sap_d[df_sap_d['Sensor ID']=='TREW 1'].plot.area(x=0, y=2,rot=90, ax=ax)
-df_T_pd.plot.area(x=0, y=1, ax=ax2,colormap="Pastel1")
-ax.legend(loc='upper left')
-ax2.legend(loc='lower right')
+###### plot Sap and Temp
+def plt_sap_T(df_sap_d,df_T_pd):
+    for i in range(sensornum):
+        
+        fig, ax = plt.subplots()
+        ax2 = ax.twinx()
+        df_sap_d[df_sap_d['Sensor ID']=='TREW '+str(i+1)].plot.area(x=0, y=2,rot=90, ax=ax)
+        df_T_pd.plot.area(x=0, y=1, ax=ax2,colormap="Pastel1")
+        ax.legend(loc='upper left')
+        ax2.legend(loc='lower right')
+        print("Sap Sensor " + str(i+1))
+        plt.show()
+    
 
-plt.show()
+plt_sap_T(df_sap_d,df_T_pd)
 
+#%%
+###### Branch size effect ######
+def branchsize(df):
+    val = np.array([])
+    for i in range(sensornum):
+        val = np.append(val,df[df['Sensor ID']=='TREW '+str(i+1)]['Sap'].mean())
+
+    means = val
+    almond_bsize1 = [.239,.194,.244,.294,.239,.239]
+    almond_bsize2 = [.947,.817,1.546,0.668,.548,.563]
+    means_adj1 = means/almond_bsize1
+    means_adj2 = means_adj1*almond_bsize2
+
+    print(means/np.max(means))
+    print(means_adj1/np.max(means_adj1))
+    print(means_adj2/np.max(means_adj2))
+
+branchsize(df_sap_d)    
+
+
+#%%
+def lowpointchk(dfmain):
+    df = dfmain[dfmain["Sensor ID"]=='TREW 2']
+    df['Date and Time'] = pd.to_datetime(df['Date and Time'])
+    df['Date and Time'] = df['Date and Time'].dt.date
+    mask = "2022-08-04"
+    mask2 = "2022-08-06"
+    df2 = df[df["Date and Time"].isin(pd.date_range(mask,mask2))]
+    
+    # print(dfmain.loc[df2.index])
+
+lowpointchk(df_sap)
 # %%
