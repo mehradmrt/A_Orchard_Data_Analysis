@@ -115,7 +115,7 @@ def branchsize(df):
     print(means_adj1/np.max(means_adj1))
     print(means_adj2/np.max(means_adj2))
 
-branchsize(df_sap_d)    
+# branchsize(df_sap_d)    
 
 
 #%%
@@ -123,7 +123,7 @@ def lowpointchk(dfmain):
     df = dfmain[dfmain["Sensor ID"]=='TREW 2']
     df['Date and Time'] = pd.to_datetime(df['Date and Time'])
     df['Date and Time'] = df['Date and Time'].dt.date
-    mask = "2022-08-04"
+    mask = "2022-06-04"
     mask2 = "2022-08-06"
     df2 = df[df["Date and Time"].isin(pd.date_range(mask,mask2))]
     
