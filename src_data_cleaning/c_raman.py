@@ -30,7 +30,7 @@ def raman_void(df,ll,hl):
     dfn = dfn.reset_index(drop=True)
     return dfn
 
-df_ram_c1 = raman_void(df_ram,50,2000)
+df_ram_c1 = raman_void(df_ram,209,2000)
 len(df_ram_c1[df_ram_c1['Raman Shift'] == '   '].index)
 df_ram.isnull().sum()
 
@@ -74,7 +74,7 @@ def bsl_rmv(df):
                 baseObj=BaselineRemoval(input_array)
                 Zhangfit_output=baseObj.ZhangFit()
                 plt.plot(xval,Zhangfit_output)
-                plt.xticks([0,100,200,300,400 ,500 ,1000, 1500, 2000],rotation=90)   
+                plt.xticks([0,100,200,300,400 ,500, 688 ,1000, 1500, 2000],rotation=90)   
 
                 idx = dfn[dfn['test_number']==tdays[k]]\
                     [dfn['tree_id']==i+1][dfn['sample_number']==samdict[j]]\
@@ -129,7 +129,7 @@ def chk_val(df,df1):
                 input_array = (test3['Dark Subtracted #1'])
                 xvaln = (test3['Raman Shift'])
                 plt.plot(xvaln,input_array)
-                plt.xticks([0,200,400 ,500 ,1000, 1500],rotation=90)   
+                plt.xticks([0,200,400 ,500, 688 ,1000, 1500],rotation=90)   
                 plt.title("Test " + str(tdays[k]) + "   Tree " + str(i+1))
  
             plt.plot(xval,yval,'k')
@@ -142,14 +142,13 @@ def raman_c2(df,cutlim):
     idxrmv1= df[df['test_number']=='T7']\
         [df['tree_id']==14].index 
     df.loc[idxrmv1,'Dark Subtracted #1'] = np.nan
-
     dfn = df[df['index'] >cutlim]
 
     return dfn
 
-df_ram_c2 = raman_c2(df_ram_avg_c,209)
+df_ram_c2 = raman_c2(df_ram_avg_c,-1)
 chk_val(df_ram_bl_c,df_ram_c2)
 df_ram_c2.isnull().sum()
 
 # %%
-df_ram_c2.to_json('../results_cleaned/almond_raman_c.json')
+# df_ram_c2.to_json('../results_cleaned/almond_raman_c.json')

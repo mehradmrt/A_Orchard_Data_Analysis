@@ -19,16 +19,10 @@ Dict = {'T1': '2022-06-08', 'T2': '2022-06-23', 'T3': '2022-07-08', 'T4': '2022-
 
 df= df_weather
 df['Date and Time'] = pd.to_datetime(df['Date and Time'])
-# df3 = df[df['Station ID']=='Weather 3']
-# df4 = df[df['Station ID']=='Weather 4']
 
 dfmax = df.groupby([df['Date and Time'].dt.date])['Temperature [℃]'].max()
-# df4max = df4.groupby([df4['Date and Time'].dt.date])['Temperature [℃]'].max()
 dfmax = dfmax.to_frame()
-# df4max = df4max.to_frame()
 dfmax.index = dfmax.index.map(str)
-# df4max.index = df4max.index.map(str)
-# df3max.plot.scatter(x=0, y=3,rot=90)
 
             
 # %%

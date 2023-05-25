@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # df_swp = pd.read_json('../results/almond_SWP.json')
-# df_lt = pd.read_json('../results/almond_leaftemp.json')
+df_lt = pd.read_json('../results/almond_leaftemp.json')
 # df_im = pd.read_json('../results/almond_im_indexes.json')
 df_sap = pd.read_json('../results/almond_sap_data.json')
 df_weather = pd.read_json('../results/almond_weather_data.json')
@@ -94,7 +94,7 @@ def plt_sap_T(df_sap_d,df_T_pd):
         ax2.legend(loc='lower right')
         print("Sap Sensor " + str(i+1))
         plt.show()
-    
+
 
 plt_sap_T(df_sap_d,df_T_pd)
 
@@ -130,4 +130,46 @@ def lowpointchk(dfmain):
     # print(dfmain.loc[df2.index])
 
 lowpointchk(df_sap)
+#%%
+###### Get test days T, RH, P #########
+# %%
+##### Dates DF Creation CWSI #####
+def dfcreate(daynum):
+    df = pd.DataFrame([],columns=['Dates'])
+    for i in Dict:
+        temp = pd.date_range(end=Dict[i], periods=daynum)
+        temp = temp.to_frame(index=False, name='Dates')
+        df = pd.concat([df,temp],ignore_index=True)
+    return df
+
+df_dates = dfcreate(1)
+df_dates['Dates'] = df_dates['Dates'].dt.strftime('%Y-%m-%d')
+
+
+df_TRHP = df_lt[['tree_idx','test_number']]
+cols_to_insert = ['Tmin', 'Tmean','Tmax','Pmin', 'Pmean','Pmax','RHmin', 'RHmean','RHmax']
+for i, col in enumerate(cols_to_insert, start=2):
+    df_TRHP.insert(i, col, '')
+
+def val_pday(mydf,arg1,arg2):
+    for i in Dict:
+        mydf['Date and Time'] = mydf['Date and Time'].map(str)
+        print(i)
+        print( mydf[mydf['Date and Time']==Dict[i]][arg2])
+        df_TRHP.loc[df_TRHP[df_TRHP['test_number']==i].index,arg1]= mydf[mydf['Date and Time']==Dict[i]][arg2].values[0]
+
+val_pday(df_T_pd,'Tmin','Min T[℃]')
+val_pday(df_T_pd,'Tmean','Mean T[℃]')
+val_pday(df_T_pd,'Tmax','Max T[℃]')
+
+val_pday(df_P_pd,'Pmin','Min P[hPa]')
+val_pday(df_P_pd,'Pmean','Mean P[hPa]')
+val_pday(df_P_pd,'Pmax','Max P[hPa]')
+
+val_pday(df_RH_pd,'RHmin','Min RH%')
+val_pday(df_RH_pd,'RHmean','Mean RH%')
+val_pday(df_RH_pd,'RHmax','Max RH%')
+
+
+
 # %%
