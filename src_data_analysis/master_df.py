@@ -10,6 +10,7 @@ df_lt = pd.read_json('../results/almond_leaftemp.json')
 
 df_ram_c = pd.read_json('../results_cleaned/almond_raman_c.json')
 df_visnir_c = pd.read_json('../results_cleaned/almond_visnir_c.json')
+df_TRHP = pd.read_json('../results/almond_TRHP.json')
 
 mdf = pd.DataFrame()
 
@@ -49,13 +50,16 @@ def swp_class(swp,qvals):
 
 # plt.scatter(mdf.index,mdf['SWP'])
 swp = swp_class(df_swp[['SWP']],[.33,.66])
-cwsi = df_cwsi[['tree_idx','test_number','leaf_temp','Ta','cwsi']]
+cwsi = df_cwsi[['cwsi']]
+weth = df_TRHP
 
-dfs = [cwsi,ndvi,gndvi,osavi,lci,ndre,swp]
+
+dfs = [weth,cwsi,ndvi,gndvi,osavi,lci,ndre,swp]
 mdf = pd.concat(dfs, axis=1)
+
 mdf.to_json('../results_cleaned/mdf_all.json')
 
-# %%
+#%%
 #### MDF ram
 def ram_tpose(df):
     mdf = pd.DataFrame()
@@ -98,7 +102,7 @@ mdfn = (mdf.iloc[-51:,:]).reset_index(drop=True)
 mdfn2 = [mdf_ram,mdf_nv,mdfn]
 mdf2 = pd.concat(mdfn2, axis=1)
 
-# mdf2.to_json('../results_cleaned/mdf2_all.json')
+mdf2.to_json('../results_cleaned/mdf2_all.json')
 
 # plt.scatter(mdf2.index,mdf2['SWP'])
 

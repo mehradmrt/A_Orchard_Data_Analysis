@@ -170,6 +170,8 @@ val_pday(df_RH_pd,'RHmin','Min RH%')
 val_pday(df_RH_pd,'RHmean','Mean RH%')
 val_pday(df_RH_pd,'RHmax','Max RH%')
 
+df_TRHP.to_json('../results/almond_TRHP.json') 
 
-
+# %%
+# df_TRHP.to_json('../results/almond_TRHP.json') 
 # %%
