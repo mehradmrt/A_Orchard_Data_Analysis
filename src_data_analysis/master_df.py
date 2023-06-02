@@ -23,7 +23,7 @@ treenum = 17
 def image_edit(df,arg):
     df = df[df['spec_idx']==arg]
     df = df[['median']]
-    df.rename(columns={'median': arg + ' median'},inplace=True)
+    df.rename(columns={'median': arg },inplace=True)
     df.reset_index(inplace=True,drop=True)
     return df
 
@@ -50,7 +50,8 @@ def swp_class(swp,qvals):
 
 # plt.scatter(mdf.index,mdf['SWP'])
 swp = swp_class(df_swp[['SWP']],[.33,.66])
-cwsi = df_cwsi[['cwsi']]
+cwsi = df_cwsi.rename(columns={'cwsi': 'CWSI'})
+cwsi = cwsi[['CWSI']]
 weth = df_TRHP
 
 

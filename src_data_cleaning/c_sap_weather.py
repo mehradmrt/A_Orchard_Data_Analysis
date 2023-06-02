@@ -145,9 +145,8 @@ def dfcreate(daynum):
 df_dates = dfcreate(1)
 df_dates['Dates'] = df_dates['Dates'].dt.strftime('%Y-%m-%d')
 
-
 df_TRHP = df_lt[['tree_idx','test_number']]
-cols_to_insert = ['Tmin', 'Tmean','Tmax','Pmin', 'Pmean','Pmax','RHmin', 'RHmean','RHmax']
+cols_to_insert = ['T_min', 'T_mean','T_max','P_min', 'P_mean','P_max','RH_min', 'RH_mean','RH_max']
 for i, col in enumerate(cols_to_insert, start=2):
     df_TRHP.insert(i, col, '')
 
@@ -158,20 +157,20 @@ def val_pday(mydf,arg1,arg2):
         print( mydf[mydf['Date and Time']==Dict[i]][arg2])
         df_TRHP.loc[df_TRHP[df_TRHP['test_number']==i].index,arg1]= mydf[mydf['Date and Time']==Dict[i]][arg2].values[0]
 
-val_pday(df_T_pd,'Tmin','Min T[℃]')
-val_pday(df_T_pd,'Tmean','Mean T[℃]')
-val_pday(df_T_pd,'Tmax','Max T[℃]')
+val_pday(df_T_pd,'T_min','Min T[℃]')
+val_pday(df_T_pd,'T_mean','Mean T[℃]')
+val_pday(df_T_pd,'T_max','Max T[℃]')
 
-val_pday(df_P_pd,'Pmin','Min P[hPa]')
-val_pday(df_P_pd,'Pmean','Mean P[hPa]')
-val_pday(df_P_pd,'Pmax','Max P[hPa]')
+val_pday(df_P_pd,'P_min','Min P[hPa]')
+val_pday(df_P_pd,'P_mean','Mean P[hPa]')
+val_pday(df_P_pd,'P_max','Max P[hPa]')
 
-val_pday(df_RH_pd,'RHmin','Min RH%')
-val_pday(df_RH_pd,'RHmean','Mean RH%')
-val_pday(df_RH_pd,'RHmax','Max RH%')
+val_pday(df_RH_pd,'RH_min','Min RH%')
+val_pday(df_RH_pd,'RH_mean','Mean RH%')
+val_pday(df_RH_pd,'RH_max','Max RH%')
 
 df_TRHP.to_json('../results/almond_TRHP.json') 
 
 # %%
-# df_TRHP.to_json('../results/almond_TRHP.json') 
+df_TRHP.to_json('../results/almond_TRHP.json') 
 # %%
