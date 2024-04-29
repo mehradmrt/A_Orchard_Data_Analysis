@@ -7,6 +7,8 @@ df_swp = pd.read_json('../results/almond_SWP.json')
 df_cwsi = pd.read_json('../results/almond_cwsi.json')
 df_im = pd.read_json('../results/almond_im_indexes.json')
 df_lt = pd.read_json('../results/almond_leaftemp.json')
+df_td_vpd  = pd.read_json('../results/almond_td_vpd.json')
+
 
 df_ram_c = pd.read_json('../results_cleaned/almond_raman_c.json')
 df_visnir_c = pd.read_json('../results_cleaned/almond_visnir_c.json')
@@ -52,10 +54,13 @@ def swp_class(swp,qvals):
 swp = swp_class(df_swp[['SWP']],[.33,.66])
 cwsi = df_cwsi.rename(columns={'cwsi': 'CWSI'})
 cwsi = cwsi[['CWSI']]
+
+td_vpd = df_td_vpd.rename(columns={'leaf_temp': 'T_c'})
+td_vpd = td_vpd[['VPD','T_c']]
+
 weth = df_TRHP
 
-
-dfs = [weth,cwsi,ndvi,gndvi,osavi,lci,ndre,swp]
+dfs = [weth,td_vpd,cwsi,ndvi,gndvi,osavi,lci,ndre,swp]
 mdf = pd.concat(dfs, axis=1)
 
 mdf.to_json('../results_cleaned/mdf_all.json')
