@@ -76,7 +76,7 @@ def plot_multi_swp_vs_columns(dataframe, x_columns, y_column):
         plt.tick_params(axis='both', which='major', labelsize=18)
 
     plt.tight_layout()
-    plt.savefig('../figures/'+orchard+'_swp_inputs.png',dpi=300)
+    # plt.savefig('../figures/'+orchard+'_swp_inputs.png',dpi=300)
     plt.show()
 
 x_columns = ['T_c', 'NDVI', 'NDRE']  
@@ -117,7 +117,7 @@ def swp_extract(df_swp, testnum, testdic, DOY, treenum):
     ax.set_ylim(0, 50)
     ax.legend(handles=legend_handles, fontsize=18)
     plt.tight_layout()
-    plt.savefig('../figures/'+orchard+'_swp_doy.png',dpi=300)
+    # plt.savefig('../figures/'+orchard+'_swp_doy.png',dpi=300)
     plt.show()
 
 swp_extract(df_swp, testnum, testdic, DOY, treenum)
