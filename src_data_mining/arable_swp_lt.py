@@ -5,15 +5,14 @@ import matplotlib.pyplot as plt
 import statistics
 
 #%%
-swp_root = 'C:/Users/Students/Box/Research/IoT4ag/Project_ Water Stress/' \
-                +'Data Collection/Almond/Ground Data'
+swp_root = '../Data Collection/Almond/Ground Data' # TODO update the directories 
 df_swp = pd.read_csv(swp_root+'/swp.csv')
 df_lt = pd.read_csv(swp_root+'/leaf_temp.csv')
 # df_swp.to_json('almond_SWP.json')
 # df_lt.to_json('almond_leaftemp.json')
 
-arable_root = 'C:/Users/Students/Box/Research/IoT4ag'\
-    +'/Project_ Water Stress/Data Collection/Almond/Arable_A'
+arable_root = '../Data Collection/Almond/Arable_A' # TODO update the directories 
+
 df_arable_T15 = pd.read_csv(arable_root+
 '/arable___012564___ 2022_06_23 19_18_17__012564_daily_20220930.csv', skiprows=10)
 df_arable_T2 = pd.read_csv(arable_root+

@@ -13,11 +13,9 @@ Dict = {'T1': '06_08_22', 'T2': '06_23_22', 'T3': '07_08_22', 'T4': '07_15_22', 
 
 def json_enumerator(idx_file, idx_type):
 
-    Json_files = 'C:/Users/Students/Box/Research/IoT4ag/Project_ Water Stress' \
-        +'/Data Collection/Almond/Multispectral/Json_files/'
+    Json_files = '../Data Collection/Almond/Multispectral/Json_files/' # TODO update the directories 
 
-    Img_files = 'C:/Users/Students/Box/Research/IoT4ag/Project_ Water Stress' \
-    + '/Data Collection/Almond/Multispectral/'
+    Img_files = '../Data Collection/Almond/Multispectral/' # TODO update the directories 
 
     index_all = list([])
 

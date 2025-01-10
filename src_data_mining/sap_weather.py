@@ -4,15 +4,12 @@ import glob
 import matplotlib.pyplot as plt
 
 ######## Constants ########
-A_rtdr = 'C:\\Users\\Students\\Box\\Research' \
-            + '\\IoT4ag\\Project_ Water Stress' \
-                + '\\Data Collection\\Almond\\Ground Data' \
-                    + '\\Almond_sap_weather\\Almond_data'
+A_rtdr = '..\\Data Collection\\Almond\\Ground Data' \
+                    + '\\Almond_sap_weather\\Almond_data' # TODO update the directories 
 A_sensor_num = 6
 
-P_rtdr = 'C:\\Users\\Students\\Box\\Research' \
-            + '\\IoT4ag\\Project_ Water Stress\\Data Collection' \
-                + '\\Pistachio\\Ground Data\\Pistachio_sap_weather'
+P_rtdr = '..\\Data Collection' \
+                + '\\Pistachio\\Ground Data\\Pistachio_sap_weather' # TODO update the directories 
 P_sensor_num = 6
 
 Almond_coef = SAP_SENSOR_COEFFICIENTS = [

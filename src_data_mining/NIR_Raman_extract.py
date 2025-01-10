@@ -7,7 +7,7 @@ import os
 tdays = ['T5','T6','T7']
 samdict = ['S1','S2','S3']
 nirdict = {'T5': '07_30_22', 'T6': '08_03_22', 'T7': '08_31_22'}
-vnir_dir = 'C:/Users/Students/Box/IoT-4Ag -Data/VIS_NIR/Almond_'
+vnir_dir = '../VIS_NIR/Almond_' # TODO update the directories 
 treenum = 17
 
 def file_rename():
@@ -69,7 +69,7 @@ import glob
 tdays = ['T5','T6','T7']
 ramdict = {'T5': '07_30_22', 'T6': '08_03_22', 'T7': '08_31_22'}
 samdict = ['S1','S2','S3']
-ram_dir = 'C:/Users/Students/Box/IoT-4Ag -Data/Ramandata/Almond-Leaves-Ramandata-'
+ram_dir = '../Ramandata/Almond-Leaves-Ramandata-' # TODO update the directories 
 treenum = 17
 
 def Raman():
